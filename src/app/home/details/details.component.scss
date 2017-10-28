@@ -1,0 +1,89 @@
+$videoHeight: 210px;
+
+.details-box{
+  height: 100%;
+  position: relative;
+  .details-video{
+    width: 100%;
+    height: $videoHeight;
+    position: absolute;
+    top: 0;
+    video{
+      width: 100%;
+    }
+  }
+
+  .content-box{
+    height: 100%;
+    padding-top: $videoHeight + 10px;
+    padding-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .details-content{
+    height: 100%;
+    padding: 0 20px;
+    position: relative;
+    .content-height{
+      height: 100%;
+      padding-bottom: 30px;
+      & > div{
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling : touch;
+      }
+    }
+    .content-title{
+      width: 100%;
+      height: 30px;
+      background: #fff;
+      img{
+        display: inline-block;
+        height: 16px;
+        vertical-align: top;
+      }
+      span{
+        font-size: 16px;
+        line-height: 16px;
+        text-indent: 28px;
+      }
+      p{
+        margin-top: 8px;
+        color: #494949;
+        line-height: 14px;
+        text-indent: 10px;
+        position: relative;
+        &::before{
+          content: '';
+          display: block;
+          width: 4px;
+          height: 14px;
+          border-radius: 5px;
+          background: #5bd5ff;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  
+
+}
+
+.button{
+  display: block;
+  width: 85px;
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  transition: all .2s;
+  -webkit-transition: all .2s;
+  &:active{
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+  }
+  img{
+    width: 100%;
+  }
+}

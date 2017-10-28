@@ -1,0 +1,41 @@
+<app-header>登录</app-header>
+
+<div class="form-box" [formGroup]="formModel">
+
+  <div class="login-logo">
+    <img src="assets/images/logo.png" alt="">
+  </div>
+
+  <ul>
+    <li>
+      <div class="input-box">
+        <input type="text" class="form-input" placeholder="请输入您的手机号" formControlName="mobile" maxlength="11" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('mobile').untouched">
+        <span [hidden]="!formModel.hasError('required', ['mobile'])">请输入您的手机号</span>
+        <span [hidden]="!formModel.hasError('pattern', ['mobile'])">请输入正确的手机号</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="password" class="form-input" placeholder="请输入密码" formControlName="passWord" maxlength="20" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('passWord').untouched">
+        <span [hidden]="!loginError">{{loginError}}</span>
+        <span [hidden]="!formModel.hasError('required', ['passWord'])">请输入密码</span>
+        <span [hidden]="!formModel.hasError('pattern', ['passWord'])">请输入正确的密码</span>
+        <span [hidden]="!formModel.hasError('minlength', ['passWord']) && !formModel.hasError('maxlength', ['passWord'])">请输入6-20位字符</span>
+      </div>
+    </li>
+    <li>
+      <a href="javascript: void(0);" class="form-submit" 
+        [ngClass]="{disabled: formModel.invalid || isLoading}" 
+        (click)="submit()">{{isLoading ? '登录中...' : '登录'}}</a>
+    </li>
+    <li>
+      <a href="javascript: void(0);" class="form-small-btn fl" [routerLink]="['/regis']">新用户注册</a>
+      <a href="javascript: void(0);" class="form-small-btn fr" [routerLink]="['/retri']">忘记密码？</a>
+    </li>
+  </ul>
+
+</div>

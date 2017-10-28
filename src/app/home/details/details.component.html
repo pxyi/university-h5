@@ -1,0 +1,22 @@
+<app-header redirectTo="/home" background="rgba(0, 0, 0, 0)">{{courseWareInfo?.name}}</app-header>
+
+<div class="details-box">
+  <div class="details-video">
+    <video [src]="courseWareInfo?.videoLink" controls="controls"></video>
+  </div>
+  <div class="content-box">
+    <div class="details-content">
+      <div class="content-title clear">
+        <p>课件介绍</p>
+      </div>
+      <div class="content-height">
+        <div>
+          <div class="content" id="content" [innerHTML]="courseWareInfo?.graphicLink"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="javascript: void(0);" class="button" (click)="goEarn()">
+    <img src="assets/images/button.png" alt="">
+  </a>
+</div>

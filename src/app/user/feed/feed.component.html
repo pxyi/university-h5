@@ -1,0 +1,16 @@
+<app-header redirectTo="/user">意见反馈</app-header>
+
+<div class="feed-box">
+
+  <div class="feed-head">
+    <div class="feed-head-img"><img src="assets/images/logo.png" alt=""></div>
+    <h2>鱼乐大学小秘书</h2>
+    <p>hi, 我是鱼乐大学小秘书, 您有什么反馈或者意见都可以留言告诉我 ~ </p>
+  </div>
+  <div class="feed-content">
+    <textarea placeholder="意见反馈..." [(ngModel)]="remark"></textarea>
+  </div>
+  
+  <a href="javascript: void(0);" class="form-submit" (click)="submit()">提交</a>
+
+</div>

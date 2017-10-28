@@ -1,0 +1,72 @@
+<app-header redirectTo="/user">编辑个人信息</app-header>
+
+<a href="javascript: void(0);" class="save" (click)="save()" *ngIf="!isApply">保存</a>
+
+<div class="form-container" [formGroup]="formModel">
+  <ul>
+    <li>
+      <span>姓名</span>
+      <input  id="name"type="text" formControlName="empName" placeholder="点击输入姓名">
+    </li>
+    <li>
+      <span>性别</span>
+      <label for="sex">{{formModel.get('sex').value ? '女' : '男'}}</label>
+      <select id="sex" formControlName="sex">
+        <option value="0">男</option>
+        <option value="1">女</option>
+      </select>
+    </li>
+    <li>
+      <span>出生日期</span>
+      <label for="birth">{{formModel.get('birthday').value || '点击选择日期'}}</label>
+      <input  id="birth" type="date" style="opacity: 0" formControlName="birthday">
+    </li>
+    <li>
+      <span>毕业院校</span>
+      <input  id="school"type="text" formControlName="school" placeholder="点击输入毕业院校">
+    </li>
+    <li>
+      <span>目前所在城市</span>
+      <label for="city">{{formModel.get('placeCity').value || '请选择'}}</label>
+      <select id="city" formControlName="placeCity">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+      </select>
+    </li>
+    <li>
+      <span>期望工作城市</span>
+      <label for="expect">{{formModel.get('expectCity').value || '请选择'}}</label>
+      <select id="expect" formControlName="expectCity">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+      </select>
+    </li>
+  </ul>
+  <div class="introduce">
+    <input type="text" placeholder="请输入自我介绍" formControlName="selfIntroduction">
+  </div>
+  <div class="life">
+    <ol>
+      <li>
+        <label for="file1">
+          <ng-container *ngIf="formModel.get('picture').value.split('***')[0]"><img [src]="formModel.get('picture').value.split('***')[0]" alt=""></ng-container>
+        </label>
+        <input type="file" id="file1" #file1 (change)="picture(file1, 0)">
+      </li>
+      <li>
+        <label for="file2">
+          <ng-container *ngIf="formModel.get('picture').value.split('***')[1]"><img [src]="formModel.get('picture').value.split('***')[1]" alt=""></ng-container>
+        </label>
+        <input type="file" id="file2" #file2 (change)="picture(file2, 1)">
+      </li>
+      <li>
+        <label for="file3">
+          <ng-container *ngIf="formModel.get('picture').value.split('***')[2]"><img [src]="formModel.get('picture').value.split('***')[2]" alt=""></ng-container>
+        </label>
+        <input type="file" id="file3" #file3 (change)="picture(file3, 2)">
+      </li>
+    </ol>
+    <p>*生活照(限3张)</p>
+  </div>
+  <a href="javascript: void(0);" class="form-submit" *ngIf="isApply" (click)="applyInter()">申请面试</a>
+</div>

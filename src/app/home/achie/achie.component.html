@@ -1,0 +1,27 @@
+<app-header [redirectTo]="['/home/earn', courseWareId]">查看成绩</app-header>
+<div class="achie-box">
+  <div>
+    <dl *ngFor="let item of achieInfo?.data; let idx = index">
+      <dt>
+        <h4>{{item.questionName}}</h4>
+        <p>{{item.score}}分</p>
+      </dt>
+      <dd>
+        <ul>
+          <li *ngFor="let option of item.options.split('***'); let i = index">
+            <ng-container *ngIf="item.answer === item.employeeAnswer">
+              <img src="assets/images/selected-{{item.data.indexOf(i) > -1 ? 'true' : 'false'}}.png" alt="">
+            </ng-container>
+            <ng-container *ngIf="item.answer !== item.employeeAnswer">
+              <img src="assets/images/selected-{{item.data.indexOf(i) > -1 ? 'error' : 'false'}}.png" alt="">
+            </ng-container>
+            <p>{{option}}</p>
+          </li>
+        </ul>
+      </dd>
+      <dd [ngClass]="item.answer === item.employeeAnswer ? 'success' : 'error'">
+        正确答案: {{item.answer}}
+      </dd>
+    </dl>
+  </div>
+</div>

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'scss/reset.scss';
+
+@import 'scss/form.scss';
+
+
+html,
+body{
+  min-height: 100%;
+  // overflow-y: auto;
+  // -webkit-overflow-scrolling : touch;
+}
+#content *{
+  max-width: 100%;
+}

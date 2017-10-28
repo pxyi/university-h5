@@ -1,0 +1,110 @@
+.home-box{
+  height: 31.2rem;
+  background: url(../../assets/images/home-bg.jpg) no-repeat;
+  background-size: cover;
+  position: relative;
+  .home-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    li{
+      position: absolute;
+      img{
+        width: 100%;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        &:active{
+          transform: scale(.9);
+          -webkit-transform: scale(.9);
+        }
+      }
+      div{
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        i{
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          background: url(../../assets/images/x-false.png) no-repeat center center;
+          background-size: 15px;
+          &.active{
+            background: url(../../assets/images/x-true.png) no-repeat center center;
+            background-size: 15px;
+          }
+        }
+      }
+      &:nth-child(1){
+        width: 2.75rem;
+        top: .8rem;
+        left: 50%;
+        margin-left: -1.375rem;
+      }
+      &:nth-child(2){
+        width: 3.1rem;
+        top: 4rem;
+        left: .55rem;
+      }
+      &:nth-child(3){
+        width: 2.98rem;
+        top: 6rem;
+        right: .7rem;
+      }
+      &:nth-child(4){
+        width: 3.4rem;
+        top: 8.2rem;
+        left: .3rem;
+      }
+      &:nth-child(5){
+        width: 3.18rem;
+        top: 10.8rem;
+        right: .6rem;
+      }
+      &:nth-child(6){
+        width: 3.32rem;
+        top: 13.6rem;
+        left: .4rem;
+      }
+      &:nth-child(7){
+        width: 3.1rem;
+        top: 16rem;
+        right: .8rem;
+      }
+      &:nth-child(8){
+        width: 3.48rem;
+        top: 19rem;
+        left: .4rem;
+      }
+      &:nth-child(9){
+        width: 3.18rem;
+        top: 21.4rem;
+        right: .5rem;
+      }
+      &:nth-child(10){
+        width: 3.6rem;
+        top: 25rem;
+        left: 50%;
+        margin-left: -1.8rem;
+      }
+    }
+  }
+}
+
+.apply-inter{
+  width: 85px;
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  img{
+    width: 100%;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    &:active{
+      transform: scale(.9);
+      -webkit-transform: scale(.9);
+    }
+  }
+}

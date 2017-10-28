@@ -1,0 +1,32 @@
+<app-header [redirectTo]="['/home/details', courseWareId]">赚取学分</app-header>
+
+<div class="earn-box">
+  <div class="earn-head">
+    <div class="earn-head-img"><img src="assets/images/logo.png" alt=""></div>
+    <h2>{{courseWareInfo?.courseWarName}}</h2>
+    <p>最多可赚取10学分，加油啊！</p>
+  </div>
+  <ul>
+    <li>
+      <p>题目数量</p>
+      <span>5道</span>
+    </li>
+    <li>
+      <p>考试时长</p>
+      <span>5分钟</span>
+    </li>
+    <li>
+      <p>每日提交次数</p>
+      <span>{{courseWareInfo?.examCount}}/3次</span>
+    </li>
+    <div class="achie-box clear" *ngIf="courseWareInfo?.score > -1">
+      <p>最高获得学分</p>
+      <span>
+        {{courseWareInfo?.score}}
+        <a href="javascript: void(0);" [routerLink]="['/home/achie', courseWareId]">(查看成绩)</a>
+      </span>
+    </div>
+  </ul>
+  
+  <a href="javascript: void(0);" class="form-submit" [routerLink]="['/home/exam', courseWareId]" *ngIf="courseWareInfo?.examCount < 3">参加考试</a>
+</div>

@@ -1,0 +1,57 @@
+<app-header redirectTo="/login">注册</app-header>
+
+<div class="form-box" [formGroup]="formModel">
+
+  <ul>
+    <li>
+      <div class="input-box">
+        <input type="text" class="form-input" placeholder="请输入姓名" formControlName="name" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('name').untouched">
+        <span [hidden]="!formModel.hasError('required', ['name'])">请输入姓名</span>
+        <span [hidden]="!formModel.hasError('pattern', ['name'])">请输入正确的姓名</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="text" class="form-input" placeholder="请输入手机号" formControlName="mobile" />
+        <a href="javascript: void(0);" class="get-code" [ngClass]="{active: verification.getCodeTime > 0}" (click)="getCode()">
+          {{verification.getCodeTime ? verification.getCodeTime + '秒后重新获取' : '获取验证码'}}
+        </a>
+      </div>
+      <div class="input-error" [hidden]="formModel.get('mobile').untouched">
+        <span [hidden]="!formModel.hasError('required', ['mobile'])">请输入手机号</span>
+        <span [hidden]="!formModel.hasError('pattern', ['mobile'])">请输入正确的手机号码</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="text" class="form-input" placeholder="请输入验证码" formControlName="identifyingCode" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('identifyingCode').untouched">
+        <span [hidden]="!formModel.hasError('required', ['identifyingCode'])">请输入验证码</span>
+        <span [hidden]="!formModel.hasError('pattern', ['identifyingCode'])">请输入正确的验证码</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="password" class="form-input" placeholder="请输入密码" formControlName="passWord" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('passWord').untouched">
+        <span [hidden]="!formModel.hasError('required', ['passWord'])">请输入密码</span>
+        <span [hidden]="!formModel.hasError('pattern', ['passWord'])">请输入正确的密码</span>
+        <span [hidden]="!formModel.hasError('minlength', ['passWord']) && !formModel.hasError('maxlength', ['passWord'])">请输入6-20位字符</span>
+      </div>
+    </li>
+    <li>
+      <a href="javascript: void(0);" class="form-submit" 
+        [ngClass]="{disabled: formModel.invalid}" 
+        (click)="submit()">立即注册</a>
+    </li>
+    <li>
+      <a href="javascript: void(0);" class="form-small-btn fl" [routerLink]="['/login']">〈去登录</a>
+      <a href="javascript: void(0);" class="form-small-btn fr" [routerLink]="['/retri']">找回密码〉</a>
+    </li>
+  </ul>
+
+</div>

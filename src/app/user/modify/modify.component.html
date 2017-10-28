@@ -1,0 +1,40 @@
+<app-header redirectTo="/user/setting">修改密码</app-header>
+
+<div class="form-box" [formGroup]="formModel">
+  <ul>
+    <li>
+      <div class="input-box">
+        <input type="text" class="form-input" placeholder="请输入密码" formControlName="passWord" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('passWord').untouched">
+        <span [hidden]="!formModel.hasError('required', ['passWord'])">请输入密码</span>
+        <span [hidden]="!formModel.hasError('pattern', ['passWord'])">请输入正确的密码</span>
+        <span [hidden]="!formModel.hasError('minlength', ['passWord']) && !formModel.hasError('maxlength', ['passWord'])">请输入6-20位字符</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="password" class="form-input" placeholder="请输入密码" formControlName="newPassWord" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('newPassWord').untouched">
+        <span [hidden]="!formModel.hasError('required', ['newPassWord'])">请输入密码</span>
+        <span [hidden]="!formModel.hasError('pattern', ['newPassWord'])">请输入正确的密码</span>
+        <span [hidden]="!formModel.hasError('minlength', ['newPassWord']) && !formModel.hasError('maxlength', ['newPassWord'])">请输入6-20位字符</span>
+      </div>
+    </li>
+    <li>
+      <div class="input-box">
+        <input type="password" class="form-input" placeholder="确认密码" formControlName="newenterpass" />
+      </div>
+      <div class="input-error" [hidden]="formModel.get('newenterpass').untouched">
+        <span [hidden]="!formModel.hasError('required', ['newenterpass'])">请确认密码</span>
+        <span [hidden]="formModel.get('newPassWord').value === formModel.get('newenterpass').value">两次输入的密码不一致</span>
+      </div>
+    </li>
+    <li>
+      <a href="javascript: void(0);" class="form-submit" 
+        [ngClass]="{disabled: formModel.invalid || formModel.get('newPassWord').value !== formModel.get('newenterpass').value}" 
+        (click)="submit()">立即注册</a>
+    </li>
+  </ul>
+</div>

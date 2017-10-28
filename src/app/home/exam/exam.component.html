@@ -1,0 +1,50 @@
+<app-header [redirectTo]="['/home/earn', courseWareId]">题目{{examIndex}} / 5</app-header>
+
+<div class="exam-box">
+  <div class="quest-box">
+    <div class="query-transform">
+      <div class="exam-container" *ngFor="let item of examItems; let idx = index" [ngClass]="{active: examIndex === idx + 1}">
+        <div class="exam-head">
+          <h2>[{{item.theorySelectType == 0 ? '多选' : '单选'}}]{{item.questionName}}</h2>
+          <p>(2分)</p>
+        </div>
+        <div class="exam-form">
+          <ul>
+            <li *ngFor="let option of item.options.split('***'); let i = index">
+              <ng-container *ngIf="item.theorySelectType == 0">
+                <input type="checkbox" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer[i]">
+              </ng-container>
+              <ng-container *ngIf="item.theorySelectType == 1">
+                <input type="radio" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer">
+              </ng-container>
+              <label for="rd{{idx}}{{i}}">{{option}}</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="exam-button">
+    <a href="javascript: void(0);" (click)="examPrev()" [hidden]="examIndex == 1"><img src="assets/images/quest-prev.png"></a>
+    <a href="javascript: void(0);" (click)="examNext()" [hidden]="examIndex == 5"><img src="assets/images/quest-next.png"></a>
+    <a href="javascript: void(0);" (click)="examSubmit()" [hidden]="examIndex != 5"><img src="assets/images/submit.png"></a>
+  </div>
+
+</div>
+
+
+<div class="exam-complete" [ngClass]="{active: isComplate}">
+  <div class="complete">
+    <img src="assets/images/alert-head.png" alt="">
+    <div>
+      <div class="exam-ico">
+        <img src="assets/images/exam-ico.png" alt="" *ngFor="let item of result">
+      </div>
+      <p>恭喜你 获得{{result.length * 2}}学分!</p>
+      <div class="comp-button">
+        <a href="javascript: void(0);"><img src="assets/images/exam-see.png" alt="" [routerLink]="['/home/achie', courseWareId]"></a>
+        <a href="javascript: void(0);"><img src="assets/images/exam-next.png" alt="" routerLink="/home"></a>
+      </div>
+    </div>
+  </div>
+</div>

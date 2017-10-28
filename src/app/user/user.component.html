@@ -1,0 +1,39 @@
+<app-header>用户中心</app-header>
+
+<div class="user-setting" [routerLink]="['/user/setting']"><img src="assets/images/icon-setting.png" alt="设置" [routerLink]></div>
+
+<div class="user-info-box">
+  <div class="user-info-head">
+    <div class="user-info-img">
+      <label for="picture">
+        <img src="{{userInfo?.headPortrait || 'assets/images/default-boy.png'}}" alt="">
+        <img src="assets/images/icon-camera.png" alt="" class="icon-camera">
+      </label>
+      <input type="file" id="picture" #picture (change)="upfile(picture)">
+    </div>
+    <div class="user-info-name">{{userInfo?.empName || '名称'}}</div>
+    <div class="user-info-cell">已获20学分，排行216名</div>
+  </div>
+  <div class="user-cell">
+    <ul>
+      <li [routerLink]="['/user/news']">
+        <img src="assets/images/icon-news.png" alt="" class="user-cell-icon">
+        <span>消息中心</span>
+        <!-- <i class="user-tip">2</i> -->
+      </li>
+      <li (click)="goInfo()">
+        <img src="assets/images/icon-info.png" alt="" class="user-cell-icon">
+        <span>个人资料</span>
+      </li>
+      <li [routerLink]="['/user/feed']">
+        <img src="assets/images/icon-feed.png" alt="" class="user-cell-icon">
+        <span>意见反馈</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<app-footer active="2"></app-footer>
+
+
+<!-- children -->
+<div class="router-outlet-box" [ngClass]="{active: hasChildren}"><router-outlet></router-outlet></div>

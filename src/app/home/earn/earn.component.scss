@@ -1,0 +1,49 @@
+.earn-box{
+  margin-top: 45px;
+  padding: 25px;
+
+  .earn-head{
+    overflow: hidden;
+    .earn-head-img{
+      float: left;
+      width: 60px;
+      img{
+        width: 100%;
+      }
+    }
+    h2,
+    p{
+      padding-left: 75px;
+    }
+    h2{
+      font-size: 16px;
+      line-height: 30px;
+    }
+    p{
+      color: #b5b5b5;
+      line-height: 14px;
+    }
+  }
+  ul{
+    padding-top: 15px;
+    li{
+      line-height: 36px;
+      overflow: hidden;
+    }
+    p{
+      width: 100px;
+      float: left;
+    }
+    span{
+      display: block;
+      float: left;
+    }
+  }
+  .achie-box{
+    padding-top: 20px;
+    color: #24adff;
+  }
+}
+.form-submit{
+  margin-top: 20px;
+}

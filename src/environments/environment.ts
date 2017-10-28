@@ -4,5 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
+  domain: 'http://10.1.1.98:8081/university',
   production: false
 };
