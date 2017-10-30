@@ -3,21 +3,22 @@
 
 
 <app-footer active="1"></app-footer>
-
-<div class="home-box clear">
-  <div class="home-container">
-    <ul>
-      <li *ngFor="let item of courseWareItems; let idx = index">
-        <img src="{{'assets/images/' + (item.isUnlocked ? 'course-true-complete' : 'course' + (idx + 1)) + '.png'}}" alt="" (click)="goDetails(item.isUnlocked, item.courseWareId)">
-        <div>
-          <i [ngClass]="{active: item.theoryExamScore >= 2}"></i>
-          <i [ngClass]="{active: item.theoryExamScore >= 4}"></i>
-          <i [ngClass]="{active: item.theoryExamScore >= 6}"></i>
-          <i [ngClass]="{active: item.theoryExamScore >= 8}"></i>
-          <i [ngClass]="{active: item.theoryExamScore >= 10}"></i>
-        </div>
-      </li>
-    </ul>
+<div class="container">
+  <div class="home-box clear">
+    <div class="home-container">
+      <ul>
+        <li *ngFor="let item of courseWareItems; let idx = index">
+          <img src="{{'assets/images/' + (item.isUnlocked ? (idx == 10 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" (click)="goDetails(item.isUnlocked, item.courseWareId)">
+          <div>
+            <i [ngClass]="{active: item.theoryExamScore >= 2}"></i>
+            <i [ngClass]="{active: item.theoryExamScore >= 4}"></i>
+            <i [ngClass]="{active: item.theoryExamScore >= 6}"></i>
+            <i [ngClass]="{active: item.theoryExamScore >= 8}"></i>
+            <i [ngClass]="{active: item.theoryExamScore >= 10}"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
