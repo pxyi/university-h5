@@ -76,7 +76,7 @@ export class InfoComponent implements OnInit {
     }
     this.http.post('/collegeWare/saveEmployeeInfo', {updatetype: this.userInfo['id'] ? 0 : 1,paramJson: JSON.stringify(params)}).then( res => {
       if(this.isApply && res.code == 1000){
-        alert('申请面试成功');
+        alert('申请成功, 请等待面试安排');
       }else{
         alert(res.message);
       }
