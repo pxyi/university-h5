@@ -10,7 +10,7 @@
   win.addEventListener(resizeEvt, recalc, false);
   doc.addEventListener('DOMContentLoaded', recalc, false);
   win.addEventListener("popstate", function(e) {
-		if(WeixinJSBridge){
+		if(WeixinJSBridge && confirm('是否返回微信')){
 			WeixinJSBridge.call('closeWindow');
 		}
   }, false);
