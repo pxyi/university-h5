@@ -76,8 +76,10 @@
     }
   }
   .exam-button{
-    padding-top: 5px;
+    width: 100%;
     text-align: center;
+    position: fixed;
+    bottom: 20px;
     a{
       display: inline-block;
       margin: 0 10px;
