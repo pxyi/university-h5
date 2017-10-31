@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     if(score && score >= 6){
       this.router.navigate(['/user/info', 'apply']);
     }else{
-      alert('请先学完整门课程,并考试成绩均在6分以上');
+      alert('闯关成功后，才可以申请面试哦~');
     }
   }
 
