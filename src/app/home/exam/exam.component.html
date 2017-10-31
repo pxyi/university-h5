@@ -9,17 +9,19 @@
           <p>(2分)</p>
         </div>
         <div class="exam-form">
-          <ul>
-            <li *ngFor="let option of item.options.split('***'); let i = index">
-              <ng-container *ngIf="item.theorySelectType == 0">
-                <input type="checkbox" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer[i]">
-              </ng-container>
-              <ng-container *ngIf="item.theorySelectType == 1">
-                <input type="radio" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer">
-              </ng-container>
-              <label for="rd{{idx}}{{i}}">{{option}}</label>
-            </li>
-          </ul>
+          <div class="exam-scroll">
+            <ul>
+              <li *ngFor="let option of item.options.split('***'); let i = index">
+                <ng-container *ngIf="item.theorySelectType == 0">
+                  <input type="checkbox" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer[i]">
+                </ng-container>
+                <ng-container *ngIf="item.theorySelectType == 1">
+                  <input type="radio" name="r{{idx}}" id="rd{{idx}}{{i}}" [value]="i" [(ngModel)]="item.answer">
+                </ng-container>
+                <label for="rd{{idx}}{{i}}">{{option}}</label>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

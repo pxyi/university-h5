@@ -54,13 +54,15 @@ export class InfoComponent implements OnInit {
       this.http.post('/collegeWare/findEmployeeInfo', {employeeId: this.loginService.userId}).then( (res: any) => {
         if(res.code == 1000) {
           this.userInfo = res.result;
+          this.userInfo['picture'] = this.userInfo['picture'] || '******';
           this.formModel.patchValue(this.userInfo);
+          console.log(this.formModel.value)
         }
       })
     }else{
       this.userInfo = JSON.parse(this.routerInfo.snapshot.params['info']);
       console.log(this.userInfo)
-      this.userInfo['picture'] = this.userInfo['picture'] || '';
+      this.userInfo['picture'] = this.userInfo['picture'] || '******';
       this.formModel.patchValue(this.userInfo);
     }
   }
@@ -69,7 +71,7 @@ export class InfoComponent implements OnInit {
     let params = this.formModel.value;
     params.placeCity = $('#placeCity').val();
     params.expectCity = $('#expectCity').val();
-    // console.log(params);
+    
     params.employeeId = this.loginService.userId;
     if(this.isApply){
       params.interviewType = 1;
@@ -77,10 +79,11 @@ export class InfoComponent implements OnInit {
     this.http.post('/collegeWare/saveEmployeeInfo', {updatetype: this.userInfo['id'] ? 0 : 1,paramJson: JSON.stringify(params)}).then( res => {
       if(this.isApply && res.code == 1000){
         alert('申请成功, 请等待面试安排');
+        this.router.navigateByUrl('/home');
       }else{
         alert(res.message);
       }
-      if(res.code == 1000) {
+      if(res.code == 1000 && !this.isApply) {
         this.router.navigateByUrl('/user');
       }
     });

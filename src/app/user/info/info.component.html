@@ -54,21 +54,21 @@
           <ng-container *ngIf="formModel.get('picture').value.split('***')[0]"><img [src]="formModel.get('picture').value.split('***')[0]" alt=""></ng-container>
         </label>
         <input type="file" id="file1" #file1 (change)="picture(file1, 0)">
-        <a href="javascript: void(0);" (click)="removePicture(1)"></a>
+        <a href="javascript: void(0);" (click)="removePicture(1)" *ngIf="formModel.get('picture').value.split('***')[0]"></a>
       </li>
       <li>
         <label for="file2">
           <ng-container *ngIf="formModel.get('picture').value.split('***')[1]"><img [src]="formModel.get('picture').value.split('***')[1]" alt=""></ng-container>
         </label>
         <input type="file" id="file2" #file2 (change)="picture(file2, 1)">
-        <a href="javascript: void(0);" (click)="removePicture(2)"></a>
+        <a href="javascript: void(0);" (click)="removePicture(2)" *ngIf="formModel.get('picture').value.split('***')[1]"></a>
       </li>
       <li>
         <label for="file3">
           <ng-container *ngIf="formModel.get('picture').value.split('***')[2]"><img [src]="formModel.get('picture').value.split('***')[2]" alt=""></ng-container>
         </label>
         <input type="file" id="file3" #file3 (change)="picture(file3, 2)">
-        <a href="javascript: void(0);" (click)="removePicture(3)"></a>
+        <a href="javascript: void(0);" (click)="removePicture(3)" *ngIf="formModel.get('picture').value.split('***')[2]"></a>
       </li>
     </ol>
     <p>*生活照(限3张)</p>
