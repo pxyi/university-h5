@@ -1,13 +1,15 @@
 $videoHeight: 210px;
 
 .details-box{
+  padding-top: 45px;
   height: 100%;
   position: relative;
   .details-video{
     width: 100%;
     height: $videoHeight;
     position: absolute;
-    top: 0;
+    top: 45px;
+    left: 0;
     video{
       width: 100%;
     }
