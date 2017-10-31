@@ -39,7 +39,10 @@ export class ModifyComponent implements OnInit {
       }).then( res => {
         alert(res.message);
         if(res.code == 1000){
-          this.router.navigateByUrl('/home');
+          window.localStorage.clear();
+          this.http.post('/user/userLogout', {});
+          this.loginService.token = '';
+          this.router.navigateByUrl('/login');
         }
       })
     }
