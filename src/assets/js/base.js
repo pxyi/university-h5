@@ -8,10 +8,22 @@
 	};
   if (!doc.addEventListener) return;
   win.addEventListener(resizeEvt, recalc, false);
-  doc.addEventListener('DOMContentLoaded', recalc, false);
-  win.addEventListener("popstate", function(e) {
-		if(WeixinJSBridge && confirm('是否返回微信')){
-			WeixinJSBridge.call('closeWindow');
-		}
-  }, false);
+	doc.addEventListener('DOMContentLoaded', recalc, false);
+	
+	/**
+	 * 监听返回按钮, 如是微信 则出现返回 confirm
+	 */
+	history.pushState(null, null, document.URL);
+	window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+	});
+  // win.addEventListener("popstate", function(e) {
+	// 	console.log(111)
+	// 	window.history.forward(1);
+	// 	if(WeixinJSBridge && confirm('是否返回微信')){
+	// 		WeixinJSBridge.call('closeWindow');
+	// 	}else{
+	// 		window.history.forward(1);
+	// 	}
+  // }, false);
 })(window, document);
