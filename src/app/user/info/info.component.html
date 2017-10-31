@@ -1,7 +1,7 @@
 <app-header redirectTo="/user">{{isApply ? '申请面试' : '编辑个人信息'}}</app-header>
 
 <a href="javascript: void(0);" class="save" (click)="save()" *ngIf="!isApply">保存</a>
-
+<div class="scroll-box">
 <div class="form-container" [formGroup]="formModel">
   <ul>
     <li>
@@ -74,4 +74,5 @@
     <p>*生活照(限3张)</p>
   </div>
   <a href="javascript: void(0);" class="form-submit" *ngIf="isApply" (click)="applyInter()">申请面试</a>
+</div>
 </div>

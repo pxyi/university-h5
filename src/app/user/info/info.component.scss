@@ -10,7 +10,11 @@
   right: 0;
   z-index: 10;
 }
-
+.scroll-box{
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .form-container{
   ul li{
     padding-right: 15px;
