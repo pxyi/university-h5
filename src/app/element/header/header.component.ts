@@ -3,9 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-    <div class="header" [ngStyle]="{background: background}">
+    <div class="header" [ngClass]="{active: background == 'white'}">
       <a href="javascript: void(0);" class="go-back" *ngIf="redirectTo" [routerLink]="redirectTo">
-        <img src="assets/images/go-back.png" />
+        <img src="assets/images/go-back{{background == 'white' ? '-white' : ''}}.png" />
       </a>
       <ng-content></ng-content>
     </div>
@@ -18,11 +18,17 @@ import { Component, OnInit, Input } from '@angular/core';
       font-size: 16px;
       line-height: 45px;
       text-align: center;
+      background: #fff;
       border-bottom: solid 1px #e7e7e7;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 9;
+    }
+    .header.active{
+      background: rgba(255, 255, 255, 0);
+      color: #fff;
+      border-bottom: 0;
     }
     .go-back{
       display: block;
@@ -45,7 +51,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() redirectTo: string | Array<any>;
 
-  @Input() background: string = '#fff';
+  @Input() background: string = '';
 
 
 

@@ -1,8 +1,8 @@
-<app-header redirectTo="/home" background="rgba(0, 0, 0, 0)">{{courseWareInfo?.name}}</app-header>
+<app-header redirectTo="/home" background="white">{{courseWareInfo?.name}}</app-header>
 
 <div class="details-box">
   <div class="details-video">
-    <video [src]="courseWareInfo?.videoLink" controls="controls"></video>
+    <video [src]="courseWareInfo?.videoLink" poster="assets/images/video-cover.png" controls="controls"></video>
   </div>
   <div class="content-box">
     <div class="details-content">

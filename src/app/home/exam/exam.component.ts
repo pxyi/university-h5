@@ -49,13 +49,13 @@ export class ExamComponent implements OnInit {
      * 记录开始考试时间
      */
     this.startTime = new Date().getTime();
-    let setInter = setInterval( () => {
-      let time = new Date().getTime();
-      if(time - this.startTime > 5 * 60 * 1000){
-        clearInterval(setInter);
-        this.examSubmit(true);
-      }
-    }, 1000)
+    // let setInter = setInterval( () => {
+    //   let time = new Date().getTime();
+    //   if(time - this.startTime > 5 * 60 * 1000){
+    //     clearInterval(setInter);
+    //     this.examSubmit(true);
+    //   }
+    // }, 1000)
   }
 
   ngOnInit() {

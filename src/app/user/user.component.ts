@@ -3,18 +3,20 @@ import { OSStokenService } from './../services/osstoken.service';
 import { LoginService } from './../services/login.service';
 import { HttpService } from './../services/http.service';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
 
   public hasChildren: boolean;
 
   public userInfo: UserInfo;
+
+  private subscribe: any;
 
   constructor(
     private router: Router,
@@ -26,21 +28,34 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getInfo();
+    this.hasChildren = this.router.url.indexOf('/user/') > -1;
+    this.subscribe = this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          if(event.url === '/user'){
+            this.getInfo();
+          }
+        }
+        if (event instanceof NavigationEnd) {
+          this.hasChildren = event.url.indexOf('/user/') > -1;
+        }
+      });
+  }
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
+
+  getInfo(): void {
     this.http.post('/collegeWare/findEmployeeInfo', {employeeId: this.loginService.userId}).then( (res: any) => {
       if(res.code == 1000) {
         this.userInfo = res.result;
       }
     })
-    this.hasChildren = this.router.url.indexOf('/user/') > -1;
-    this.router.events
-    .subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.hasChildren = event.url.indexOf('/user/') > -1;
-      }
-    });
   }
 
   goInfo(): void {
+    console.log(JSON.stringify(this.userInfo))
     this.router.navigate(['/user/info', JSON.stringify(this.userInfo)]);
   }
 

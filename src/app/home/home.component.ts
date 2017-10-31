@@ -1,20 +1,25 @@
 import { LoginService } from './../services/login.service';
 import { HttpService } from './../services/http.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+declare const bubble: any;
+declare const $: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   
   public hasChildren: boolean;
 
   public courseWareItems: Array<object>;
 
   public isHideApply: boolean = false;
+
+  private subscribe: any;
 
   constructor(
     private router: Router,
@@ -23,16 +28,32 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    setTimeout( () => {
+      $('.container').animate({scrollTop:2000},500);
+    }, 0);
     this.hasChildren = this.router.url.indexOf('/home/') > -1;
-    this.router.events.subscribe((event) => {
+    this.subscribe = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        console.log(event.url)
+        if(event.url === '/home'){
+          this.getCourse();
+        }
+      }
       if (event instanceof NavigationEnd) {
         this.hasChildren = event.url.indexOf('/home/') > -1;
-        console.log(event)
       }
     });
 
+    setTimeout( () => {
+      bubble();
+    }, 0)
+
     /* 获取课件列表 */
     this.getCourse();
+  }
+
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
   }
 
 

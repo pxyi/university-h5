@@ -19,11 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "assets/css/cityPicker.css"
       ],
       "scripts": [
         "assets/js/base.js",
-        "assets/js/aliyun-oss-sdk.min.js"
+        "assets/js/aliyun-oss-sdk.min.js",
+        "assets/js/bubble.js",
+        "assets/js/jquery.min.js",
+        "assets/js/cityPicker.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

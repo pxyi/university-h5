@@ -48,18 +48,27 @@
       li{
         label{
           display: block;
-          height: 38px;
           padding: 10px 32px;
           line-height: 18px;
-          background: url(../../../assets/images/selected-false.png) no-repeat left center;
-          background-size: 21px 22px;
           transition: all .25s;
           -webkit-transition: all .25s;
         }
         input{
           display: none;
-          &:checked + label{
+          &[type=radio] + label{
+            background: url(../../../assets/images/selected-false.png) no-repeat left center;
+            background-size: 21px 22px;
+          }
+          &[type=radio]:checked + label{
             background: url(../../../assets/images/selected-true.png) no-repeat left center;
+            background-size: 21px 22px;
+          }
+          &[type=checkbox] + label{
+            background: url(../../../assets/images/checkbox-false.png) no-repeat left center;
+            background-size: 21px 22px;
+          }
+          &[type=checkbox]:checked + label{
+            background: url(../../../assets/images/checkbox-true.png) no-repeat left center;
             background-size: 21px 22px;
           }
         }

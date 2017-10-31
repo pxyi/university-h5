@@ -5,6 +5,8 @@
 <app-footer active="1"></app-footer>
 <div class="container">
   <div class="home-box clear">
+    <!-- 冒泡泡 -->
+    <canvas id="bubble"></canvas>
     <div class="home-container">
       <ul>
         <li *ngFor="let item of courseWareItems; let idx = index">
@@ -23,5 +25,7 @@
 </div>
 
 <div class="apply-inter"><img src="assets/images/apply.png" alt="" (click)="goApply()" *ngIf="!isHideApply"></div>
+
+
 
 

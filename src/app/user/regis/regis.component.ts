@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { VerificationService } from './../../services/verification.service';
 import { Router } from '@angular/router';
 import { HttpService } from './../../services/http.service';
@@ -21,7 +22,8 @@ export class RegisComponent implements OnInit {
   constructor(
     private http: HttpService,
     private router: Router,
-    public verification: VerificationService
+    public verification: VerificationService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
@@ -37,15 +39,26 @@ export class RegisComponent implements OnInit {
 
   submit(): void {
     if(this.formModel.valid){
-      this.http.post('/user/saveUser', this.formModel.value).then( (res: any) => {
+      this.regisAndLogin();
+    }
+  }
+
+  private async regisAndLogin() {
+    let res = await this.http.post('/user/saveUser', this.formModel.value)
+    if(res && res.code == 1000){
+      this.http.post('/user/userLogin', this.formModel.value).then( (res: any) => {
         if(res.code == 1000){
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/home');
+          this.loginService.token = res.result.token;
+          this.loginService.userId = res.result.id;
+          window.localStorage.setItem('token', res.result.token);
+          window.localStorage.setItem('userId', res.result.id);
         }else{
-          alert(res.message);
+          this.router.navigateByUrl('/login');
         }
-      }, (err: any) => {
-        alert('网络错误, 请刷新重试');
-      })
+      });
+    }else{
+      alert(res.message || '网络错误请刷新重试');
     }
   }
 
