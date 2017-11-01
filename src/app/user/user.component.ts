@@ -55,7 +55,6 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   goInfo(): void {
-    console.log(JSON.stringify(this.userInfo))
     this.router.navigate(['/user/info', JSON.stringify(this.userInfo)]);
   }
 
