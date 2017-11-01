@@ -10,7 +10,7 @@
     <div class="home-container">
       <ul>
         <li *ngFor="let item of courseWareItems; let idx = index">
-          <img src="{{'assets/images/' + (item.isUnlocked ? (idx == 9 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" (click)="goDetails(item.isUnlocked, item.courseWareId)">
+          <img src="{{'assets/images/' + (item.isUnlocked ? (idx == 9 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" (click)="goDetails(item.isUnlocked || item.isTheoryExam == 0, item.courseWareId)">
           <div>
             <i [ngClass]="{active: item.theoryExamScore >= 2}"></i>
             <i [ngClass]="{active: item.theoryExamScore >= 4}"></i>
@@ -24,7 +24,10 @@
   </div>
 </div>
 
-<div class="apply-inter"><img src="assets/images/apply.png" alt="" (click)="goApply()" *ngIf="!isHideApply"></div>
+<div class="apply-inter">
+  <img src="assets/images/apply.png" alt="" (click)="goApply()" *ngIf="interviewType != 1">
+  <img src="assets/images/apply-true.png" alt="" (click)="applyTwo()" *ngIf="interviewType == 1">
+</div>
 
 
 

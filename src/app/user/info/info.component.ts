@@ -39,7 +39,7 @@ export class InfoComponent implements OnInit {
     }, 0);
     
     this.formModel = this.fb.group({
-      headPortrait: [this.userInfo['headPortrait'] || '', [Validators.required]],
+      headPortrait: [this.userInfo['headPortrait'] || ''],
       empName: [this.userInfo['empName'] || '', [Validators.required]],
       sex: [this.userInfo['sex'] || 1, [Validators.required]],
       birthday: [this.userInfo['birthday'] || '', [Validators.required]],
@@ -56,12 +56,10 @@ export class InfoComponent implements OnInit {
           this.userInfo = res.result;
           this.userInfo['picture'] = this.userInfo['picture'] || '******';
           this.formModel.patchValue(this.userInfo);
-          console.log(this.formModel.value)
         }
       })
     }else{
       this.userInfo = JSON.parse(this.routerInfo.snapshot.params['info']);
-      console.log(this.userInfo)
       this.userInfo['picture'] = this.userInfo['picture'] || '******';
       this.formModel.patchValue(this.userInfo);
     }
@@ -100,6 +98,10 @@ export class InfoComponent implements OnInit {
   }
 
   applyInter(): void {
+    this.formModel.patchValue({
+      placeCity: $('#placeCity').val(),
+      expectCity: $('#expectCity').val()
+    });
     if(this.formModel.valid){
       this.save();
     }else{

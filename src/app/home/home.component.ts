@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public courseWareItems: Array<object>;
 
-  public isHideApply: boolean = false;
+  public interviewType: number = 0;
 
   private subscribe: any;
 
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.http.post('/courseWare/findByCourseId', {employeeId: this.loginService.userId, courseId: course.result[0].couresId})
         .then( (res: any) => {
           this.courseWareItems = res.result;
-          this.isHideApply = res.interviewType == 1;
+          this.interviewType = res.interviewType;
         })
     }else{
       alert('暂无课程, 请稍等再试');
@@ -84,6 +84,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }else{
       alert('闯关成功后，才可以申请面试哦~');
     }
+  }
+
+  applyTwo(): void {
+    alert('已申请面试, 请保持手机畅通');
   }
 
 }
