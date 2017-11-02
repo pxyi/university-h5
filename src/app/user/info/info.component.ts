@@ -41,7 +41,7 @@ export class InfoComponent implements OnInit {
     this.formModel = this.fb.group({
       headPortrait: [this.userInfo['headPortrait'] || ''],
       empName: [this.userInfo['empName'] || '', [Validators.required]],
-      sex: [this.userInfo['sex'] || 1, [Validators.required]],
+      sex: [this.userInfo['sex'] || 1],
       birthday: [this.userInfo['birthday'] || '', [Validators.required]],
       school: [this.userInfo['school'] || '', [Validators.required]],
       placeCity: [this.userInfo['placeCity'] || '', [Validators.required]],
@@ -102,6 +102,7 @@ export class InfoComponent implements OnInit {
       placeCity: $('#placeCity').val(),
       expectCity: $('#expectCity').val()
     });
+    // console.log(this.formModel.value);
     if(this.formModel.valid){
       this.save();
     }else{
