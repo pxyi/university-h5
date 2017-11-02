@@ -13,7 +13,7 @@
           <img 
             src="{{'assets/images/' + (item.isUnlocked ? (idx == 9 && item.theoryExamScore >= 6 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" 
             (click)="goDetails(item.isUnlocked, item.courseWareId)" 
-            [ngClass]="{active: !courseWareItems[idex + 1]?.isUnlocked && item.isUnlocked}">
+            [ngClass]="{active: !courseWareItems[idx + 1]?.isUnlocked && item.isUnlocked}">
           <div>
             <i [ngClass]="{active: item.theoryExamScore >= 2 && item.isUnlocked}"></i>
             <i [ngClass]="{active: item.theoryExamScore >= 4 && item.isUnlocked}"></i>
