@@ -28,7 +28,7 @@
 </div>
 
 <div class="apply-inter">
-  <img src="assets/images/apply.png" alt="" (click)="goApply()" *ngIf="interviewType != 1">
+  <img src="assets/images/apply.png" [ngClass]="{active: courseWareItems[9]?.isUnlocked && courseWareItems[9]?.theoryExamScore >= 6}" alt="" (click)="goApply()" *ngIf="interviewType != 1">
   <img src="assets/images/apply-true.png" alt="" (click)="applyTwo()" *ngIf="interviewType == 1">
 </div>
 

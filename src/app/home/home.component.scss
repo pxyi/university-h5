@@ -116,6 +116,10 @@
             transform: scale(.9);
             -webkit-transform: scale(.9);
         }
+        &.active {
+            animation: course 1s infinite;
+            -webkit-animation: course 1s infinite;
+        }
     }
 }
 
