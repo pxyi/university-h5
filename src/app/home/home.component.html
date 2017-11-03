@@ -11,7 +11,7 @@
       <ul>
         <li *ngFor="let item of courseWareItems; let idx = index">
           <img 
-            src="{{'assets/images/' + (item.isUnlocked ? (idx == 9 && item.theoryExamScore >= 6 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" 
+            src="{{'assets/images/' + (item.isUnlocked ? (idx == '9' && item.theoryExamScore >= 6 ? 'course-true-complete' : 'course-true') : 'course' + (idx + 1)) + '.png'}}" alt="" 
             (click)="goDetails(item.isUnlocked, item.courseWareId)" 
             [ngClass]="{active: !courseWareItems[idx + 1]?.isUnlocked && item.isUnlocked}">
           <div>
@@ -28,8 +28,32 @@
 </div>
 
 <div class="apply-inter">
-  <img src="assets/images/apply.png" [ngClass]="{active: courseWareItems[9]?.isUnlocked && courseWareItems[9]?.theoryExamScore >= 6}" alt="" (click)="goApply()" *ngIf="interviewType != 1">
-  <img src="assets/images/apply-true.png" alt="" (click)="applyTwo()" *ngIf="interviewType == 1">
+  <img src="assets/images/apply.png" [ngClass]="{active: courseWareLast?.isUnlocked && courseWareLast?.theoryExamScore >= 6}" alt="申请面试" (click)="goApply()" *ngIf="interviewType != 1">
+  <img src="assets/images/apply-true.png" alt="等待面试" (click)="applyTwo()" *ngIf="interviewType == 1">
+</div>
+
+<div class="guide-button">
+  <img src="assets/images/guide.png" alt="新手指引" (click)="guideIsShow = true">
+</div>
+
+<div class="guide-box" [ngClass]="{active: guideIsShow}">
+  <div>
+    <div class="guide-head">
+      <img src="assets/images/guide-head.png" alt="">
+    </div>
+    <div class="guide-h1">
+      <img src="assets/images/guide-h1.png" alt="">
+    </div>
+    <div class="guide-content">
+      <div>
+        <h2>规则说明</h2>
+        <p>1. 一共有十关，每关测试得6分以上 （含6分）即闯关成功，可进入下 一关，每关每日有三次闯关机会.</p>
+        <p>2.十关全部通过后，即可以申请面试.</p>
+        <p>3.面试通过后，即可安排到公司实习.</p>
+      </div>
+    </div>
+    <div class="guide-close"><img src="assets/images/guide-close.png" alt="关闭新手指引" (click)="guideIsShow = false"></div>
+  </div>
 </div>
 
 

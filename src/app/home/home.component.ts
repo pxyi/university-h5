@@ -16,10 +16,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   public hasChildren: boolean;
 
   public courseWareItems: Array<object>;
+  public courseWareLast: any;
 
   public interviewType: number = 0;
 
   private subscribe: any;
+
+  public guideIsShow: boolean = false;
 
   constructor(
     private router: Router,
@@ -28,13 +31,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+
+    this.guideIsShow = window.localStorage.getItem('loginType') && window.localStorage.getItem('loginType') == '0';
+    window.localStorage.setItem('loginType', '1');
+
     setTimeout( () => {
       $('.container').animate({scrollTop:2000},500);
     }, 0);
     this.hasChildren = this.router.url.indexOf('/home/') > -1;
     this.subscribe = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        console.log(event.url)
         if(event.url === '/home'){
           this.getCourse();
         }
@@ -64,6 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         .then( (res: any) => {
           this.courseWareItems = res.result;
           this.interviewType = res.interviewType;
+          this.courseWareLast = this.courseWareItems[9];
         })
     }else{
       alert('暂无课程, 请稍等再试');

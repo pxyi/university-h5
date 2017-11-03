@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           this.loginService.userId = res.result.id;
           window.localStorage.setItem('token', res.result.token);
           window.localStorage.setItem('userId', res.result.id);
+          window.localStorage.setItem('loginType', res.result.loginType);
           this.loginError = res.message;
         }else{
           this.loginError = res.message;
