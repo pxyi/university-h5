@@ -35,9 +35,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.guideIsShow = window.localStorage.getItem('loginType') && window.localStorage.getItem('loginType') == '0';
     window.localStorage.setItem('loginType', '1');
 
-    setTimeout( () => {
-      $('.container').animate({scrollTop:2000},500);
-    }, 0);
+    // setTimeout( () => {
+    //   $('.container').animate({scrollTop:2000},500);
+    // }, 0);
+    setTimeout(function() {
+      let imgs = $('.home-container').children('ul').children('li').children('.active');
+      let lastItem = imgs.eq(imgs.length - 1);
+      console.log(lastItem.position().top);
+    }, 2000);
     this.hasChildren = this.router.url.indexOf('/home/') > -1;
     this.subscribe = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {

@@ -141,8 +141,8 @@
 
 .guide-box {
     width: 100%;
-    height: 100%;
-    padding: 110px 44px;
+    // height: 100%;
+    padding: 100px 44px;
     position: fixed;
     top: 0;
     transition: all .3s;
@@ -157,27 +157,27 @@
         transform: none;
         -webkit-transform: none;
     }
-    &>div {
+    & > div {
         width: 100%;
-        height: 100%;
+        // height: 100%;
         overflow: hidden;
         position: relative;
         border-radius: 10px;
-        margin-top: -48px;
+        margin-top: -58px;
     }
     .guide-head {
         width: 100%;
-        height: 100px;
-        line-height: 100px;
+        height: 90px;
+        line-height: 90px;
         text-align: center;
         background: #0062c3;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         position: absolute;
         top: 0;
-        &>img {
+        & > img {
             display: inline-block;
-            height: 77px;
+            height: 72px;
             vertical-align: middle;
         }
     }
@@ -187,7 +187,7 @@
         line-height: 80px;
         text-align: center;
         position: absolute;
-        top: 100px;
+        top: 90px;
         &>img {
             display: inline-block;
             height: 40px;
@@ -196,11 +196,11 @@
     }
     .guide-content {
         height: 100%;
-        padding-top: 180px;
+        padding-top: 160px;
         background: #fff;
         &>div {
             height: 100%;
-            padding: 0 35px;
+            padding: 0 35px 10px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
